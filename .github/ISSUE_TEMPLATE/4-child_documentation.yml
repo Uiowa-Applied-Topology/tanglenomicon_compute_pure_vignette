@@ -1,0 +1,18 @@
+name: 👶 Documentation
+description: Template for an Documentation subtask
+title: "[👶]  Document "
+labels:
+    - Child
+    - Documentation
+body:
+    - type: checkboxes
+      id: check-search
+      attributes:
+          label: "Checklist:"
+          options:
+              - label: Implement a use case file.
+                required: false
+              - label: Implement a unit description file.
+                required: false
+              - label: Verify docs build
+                required: false

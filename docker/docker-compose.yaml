@@ -1,0 +1,104 @@
+services:
+    mongo:
+        container_name: mongo
+        image: mongo
+        restart: always
+        ports:
+            - 27017:27017
+        networks:
+            - tang_internal
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: example
+        volumes:
+            - ./.run_data/db_data:/data/db:rw
+            - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+        command: mongod --quiet
+
+    faktory:
+        container_name: faktory
+        image: contribsys/faktory
+        restart: always
+        networks:
+            - tang_internal
+        ports:
+            - 7419:7419
+            - 7420:7420
+        volumes:
+            - ./.run_data/faktory_data/config:/etc/faktory
+            - ./.run_data/faktory_data/data:/root/.faktory
+        depends_on:
+            - mongo
+
+    promexporter:
+        image: faktory_prom
+        container_name: faktorydata
+        networks:
+            - tang_internal
+        environment:
+            - FAKTORY_URL=tcp://:@faktory:7419
+        ports:
+            - 7423:7423
+        depends_on:
+            - faktory
+
+    init_prometheus:
+        image: prom/prometheus:latest
+        container_name: init_prometheus
+        user: root
+        entrypoint:
+            - /bin/sh
+            - -c
+            - |
+                chown -R 65534:65534 /prometheus
+        networks:
+            - tang_internal
+        volumes:
+            - ./prometheus_reporting/prometheus.yml:/etc/prometheus/prometheus.yml:ro # Mount the config file
+            - ./.run_data/prom_data/prometheus_data:/prometheus # Persistent storage for Prometheus data
+
+    prometheus:
+        image: prom/prometheus:latest
+        container_name: prometheus
+        networks:
+            - tang_internal
+        volumes:
+            - ./prometheus_reporting/prometheus.yml:/etc/prometheus/prometheus.yml:ro # Mount the config file
+            - ./.run_data/prom_data/prometheus_data:/prometheus # Persistent storage for Prometheus data
+        ports:
+            - "9090:9090" # Expose Prometheus UI
+        restart: unless-stopped
+        depends_on:
+            - init_prometheus
+            - promexporter
+
+    producer:
+        image: faktory_python
+        environment:
+            - CW_CFG=client
+        networks:
+            - tang_internal
+        volumes:
+            - ./config.yaml:/config/config.yaml
+        restart: always
+        depends_on:
+            - faktory
+
+    worker:
+        image: faktory_python
+        environment:
+            - CW_CFG=worker
+        volumes:
+            - ./config.yaml:/config/config.yaml
+        networks:
+            - tang_internal
+        restart: always
+        depends_on:
+            - faktory
+        deploy:
+            mode: replicated
+            replicas: 16
+
+networks:
+    tang_internal:
+        driver: bridge

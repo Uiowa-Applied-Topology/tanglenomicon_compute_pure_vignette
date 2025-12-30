@@ -1,0 +1,81 @@
+site_name: Right Leaning Identity Tangle Tree Generation Toolchain
+site_description: A toolchain for generating RLITT
+site_url: https://joe-starr.com/
+theme:
+    name: material
+    palette:
+        # Dark Mode
+        - scheme: slate
+          toggle:
+              icon: material/weather-sunny
+              name: Dark mode
+          primary: purple
+          accent: deep purple
+
+        # Light Mode
+        - scheme: default
+          toggle:
+              icon: material/weather-night
+              name: Light mode
+          primary: purple
+          accent: deep purple
+    features:
+        - navigation.sections
+repo_name: Uiowa-Applied-Topology/tanglenomicon_rlitt_runner
+repo_url: https://github.com/Uiowa-Applied-Topology/tanglenomicon_rlitt_runner
+extra_css:
+    - https://unpkg.com/katex@0/dist/katex.min.css
+    - "admonitions.css"
+
+extra_javascript:
+    - https://unpkg.com/katex@0/dist/katex.min.js
+    - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+    - "extra.js"
+
+watch:
+    - docs
+
+plugins:
+    - gh-admonitions:
+    - search: null
+    - mkdocstrings:
+          handlers:
+              python:
+                  options:
+                      extensions:
+                          - griffe_typingdoc
+                      show_root_heading: true
+                      show_if_no_docstring: true
+                      inherited_members: true
+                      members_order: source
+                      separate_signature: true
+                      unwrap_annotated: true
+                      merge_init_into_class: true
+                      signature_crossrefs: true
+                      show_symbol_type_heading: true
+                      show_symbol_type_toc: true
+                      filters: [] # An empty list means no filtering, so private members will be included.
+
+markdown_extensions:
+    - pymdownx.arithmatex:
+          generic: true
+    - toc:
+          permalink: 
+          separator: "_"
+    - admonition
+    - pymdownx.details
+    - pymdownx.emoji:
+          emoji_index: !!python/name:material.extensions.emoji.twemoji
+          emoji_generator: !!python/name:material.extensions.emoji.to_svg
+          options:
+              custom_icons:
+                  - overrides/.icons
+    - pymdownx.superfences:
+          custom_fences:
+              - name: mermaid
+                class: mermaid
+                format: !!python/name:pymdownx.superfences.fence_code_format
+extra:
+    social:
+        - icon: fontawesome/brands/github-alt
+          link: https://github.com/Uiowa-Applied-Topology/tanglenomicon_rlitt_runner

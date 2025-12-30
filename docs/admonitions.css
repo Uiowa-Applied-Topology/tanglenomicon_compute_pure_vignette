@@ -1,0 +1,38 @@
+:root {
+  --md-admonition-icon--test-card: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>test-tube</title><path d="M7,2V4H8V18A4,4 0 0,0 12,22A4,4 0 0,0 16,18V4H17V2H7M11,16C10.4,16 10,15.6 10,15C10,14.4 10.4,14 11,14C11.6,14 12,14.4 12,15C12,15.6 11.6,16 11,16M13,12C12.4,12 12,11.6 12,11C12,10.4 12.4,10 13,10C13.6,10 14,10.4 14,11C14,11.6 13.6,12 13,12M14,7H10V4H14V7Z" /></svg>');
+  --md-admonition-icon--requirement-card: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>receipt-text-check</title><path d="M18.25 22L15.5 19L16.66 17.82L18.25 19.41L21.84 15.82L23 17.23M19.5 3.5L18 2L16.5 3.5L15 2L13.5 3.5L12 2L10.5 3.5L9 2L7.5 3.5L6 2L4.5 3.5L3 2V22L4.5 20.5L6 22L7.5 20.5L9 22L10.5 20.5L12 22L13.26 20.74C13.09 20.18 13 19.59 13 19C13 18.32 13.12 17.64 13.34 17H6V15H14.53C15.67 13.73 17.29 13 19 13C19.68 13 20.36 13.12 21 13.34V2L19.5 3.5M18 13H6V11H18V13M18 9H6V7H18V9Z" /></svg>');
+
+}
+.md-typeset .admonition.test-card,
+.md-typeset details.test-card {
+  border-color:#FF4136;
+}
+.md-typeset .test-card > .admonition-title,
+.md-typeset .test-card > summary {
+  background-color: rgba(255, 65, 54, 0.1);
+  border-color: rgb(255, 65, 54);
+}
+.md-typeset .test-card > .admonition-title::before,
+.md-typeset .test-card > summary::before {
+  background-color: rgb(255, 65, 54);
+  -webkit-mask-image: var(--md-admonition-icon--test-card);
+          mask-image: var(--md-admonition-icon--test-card);
+}
+
+
+
+.md-typeset .admonition.requirement-card,
+.md-typeset details.requirement-card {
+  border-color:#F012BE; 
+}
+.md-typeset .requirement-card > .admonition-title,
+.md-typeset .requirement-card > summary {
+  background-color: rgba(240, 18, 190, 0.1);
+  border-color: rgb(240, 18, 190);
+}
+.md-typeset .requirement-card > .admonition-title::before,
+.md-typeset .requirement-card > summary::before {
+  background-color: rgb(240, 18, 190);
+  -webkit-mask-image: var(--md-admonition-icon--requirement-card);
+          mask-image: var(--md-admonition-icon--requirement-card);
+}

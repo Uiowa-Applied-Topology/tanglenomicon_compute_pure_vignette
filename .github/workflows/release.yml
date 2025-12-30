@@ -1,0 +1,51 @@
+name: Create release
+
+on:
+    push:
+        tags:
+            - "v*.*.*"
+
+permissions:
+    contents: write
+
+jobs:
+    release:
+        runs-on: ubuntu-22.04
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  submodules: recursive
+                  fetch-depth: 0
+
+            - name: Check Nixpkgs inputs
+              uses: DeterminateSystems/flake-checker-action@main
+              with:
+                  fail-mode: true
+
+            - name: Install Nix
+              uses: DeterminateSystems/nix-installer-action@main
+
+            - name: Prettier
+              run: |
+                  nix develop --command \
+                      just check-prettier
+
+            - name: ruff
+              run: |
+                  nix develop --command \
+                      just check-ruff
+
+            - name: Build
+              run: |
+                  nix develop --command \
+                      just build-wrapper
+
+            - name: Test
+              run: |
+                  nix develop --command \
+                    just test-all
+
+            - name: Docs
+              run: |
+                  nix develop --command \
+                      just docs

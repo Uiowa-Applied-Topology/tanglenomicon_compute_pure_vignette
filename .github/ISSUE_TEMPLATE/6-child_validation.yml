@@ -1,0 +1,16 @@
+name: 👶 Validation
+description: Template for an Validation subtask
+title: "[👶] Validate"
+labels:
+    - Child
+    - Validation
+body:
+    - type: checkboxes
+      id: check-search
+      attributes:
+          label: "Checklist:"
+          options:
+              - label: Implement unit tests.
+                required: false
+              - label: Run unit tests.
+                required: false

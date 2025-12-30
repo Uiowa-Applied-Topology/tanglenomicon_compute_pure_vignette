@@ -1,0 +1,6 @@
+name: 👶 Implementation
+description: Template for an Implementation subtask
+title: "[👶] Implement"
+labels:
+    - Child
+    - Implementation

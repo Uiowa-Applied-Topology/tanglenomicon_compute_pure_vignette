@@ -1,0 +1,3 @@
+[submodule "libraries/core_lib"]
+	path = libraries/core_lib
+	url = git@github.com:Uiowa-Applied-Topology/tanglenomicon_core_libraries.git

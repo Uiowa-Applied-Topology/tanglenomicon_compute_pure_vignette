@@ -1,0 +1,33 @@
+name:🧹 Chore
+description: Template for infrastructure chores 
+title: "[🧹] "
+labels:
+    - Enhancement
+body:
+    - type: checkboxes
+      id: check-search
+      attributes:
+          label: Is there an existing issue for this?
+          description: >-
+              Please search to see if an issue already exists for the issue you encountered.
+          options:
+              - label: I have searched the existing issues
+                required: true
+    - type: checkboxes
+      id: check-pull
+      attributes:
+          label: Will you be opening a pull request?
+          description: >-
+              Will you be opening a pull request for this chore?
+          options:
+              - label: "yes"
+              - label: "no, it will piggyback on another issue"
+              - label: "no"
+    - type: textarea
+      id: whats-your-suggestion
+      attributes:
+          label: What is the chore?  
+          description: Your question
+          placeholder: >-
+      validations:
+          required: true

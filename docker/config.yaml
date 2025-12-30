@@ -1,0 +1,13 @@
+faktory-connection-info:
+    port: 7419
+    domain: faktory
+db-connection-info:
+    domain: mongo
+    port: 27017
+    user: root
+    password: example
+    database: tanglenomicon
+tangle-collections:
+    stencil_col_name: arborescent_stencils
+    col_name: arborescent_tangles
+    page_size: 500

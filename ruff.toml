@@ -1,0 +1,45 @@
+line-length = 100
+
+[format]
+quote-style = "single"
+indent-style = "space"
+docstring-code-format = true
+
+
+[lint]
+exclude = ["test_*.py"]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+    # pydocstyle
+    "D"
+]
+ignore = [
+        "D211",
+        "D203",
+        "D213",
+        "D413",
+        "E111",
+        "W191",
+        "E114",
+        "E117",
+        "D206",
+        "D300",
+        "Q000",
+        "Q001",
+        "Q002",
+        "Q003",
+        "COM812",
+        "COM819",
+        "E501",
+        ]

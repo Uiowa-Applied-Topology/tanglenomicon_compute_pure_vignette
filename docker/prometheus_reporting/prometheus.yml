@@ -1,0 +1,11 @@
+global:
+    scrape_interval: 5s # How frequently to scrape targets
+    evaluation_interval: 15s # How frequently to evaluate rules
+
+scrape_configs:
+    - job_name: "prometheus"
+      static_configs:
+          - targets: ["localhost:9090"] # Prometheus itself
+    - job_name: "faktory"
+      static_configs:
+          - targets: ["faktorydata:7423"]
