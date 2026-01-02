@@ -1,6 +1,6 @@
 # Toolchain for Computing the Pure Vignette for Right Leaning Identity Tangle Trees
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![DOI - 10.5281/zenodo.18134849](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18134849-2ea44f?logo=DOI)](https://doi.org/10.5281/zenodo.18134849)[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Note to Reader
 

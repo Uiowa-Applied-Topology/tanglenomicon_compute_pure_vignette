@@ -2,7 +2,7 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: 'The Tanglenomicon: RLITT Runner'
+title: 'The Tanglenomicon: Computation RLITT Pure Vignette Runner'
 message: >-
   If you use this software or design, please cite it as
   below.
@@ -10,9 +10,9 @@ type: software
 authors:
   - family-names: Starr
     given-names: Joseph
-doi: 10.5281/zenodo.17612686
-repository-code: 'https://github.com/Uiowa-Applied-Topology/tanglenomicon_rlitt_runner'
+doi: 10.5281/zenodo.18134849
+repository-code: 'https://github.com/Uiowa-Applied-Topology/tanglenomicon_compute_pure_vignette'
 abstract: >-
-  The Tanglenomicon RLITT Runner contains tooling for programatically generating RLITT in a distributed way.
+  The Tanglenomicon RLITT pure vignette runner contains tooling for programatically computing on RLITT in a distributed way.
 license: GPL-3.0-or-later
-date-released: '2025-02-11'
+date-released: '2026-01-02'
