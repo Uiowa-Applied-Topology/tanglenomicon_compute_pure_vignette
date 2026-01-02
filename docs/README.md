@@ -1,6 +1,5 @@
-# Toolchain for Generating Right Leaning Identity Tangle Trees
+# Toolchain for Computing the Pure Vignette for Right Leaning Identity Tangle Trees
 
-[![DOI - 10.5281/zenodo.17612686](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.17612686-2ea44f?logo=doi)](https://doi.org/10.5281/zenodo.17612686)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Note to Reader
