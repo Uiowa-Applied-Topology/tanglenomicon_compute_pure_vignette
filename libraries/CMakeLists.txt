@@ -4,7 +4,7 @@
 cmake_minimum_required(VERSION 3.12)
 
 project(
-        runner_rlittgen
+        comp_rlitt
         LANGUAGES C CXX
         VERSION 0.0.1)
 
@@ -54,11 +54,7 @@ include(CTest)
 add_subdirectory(core_lib/source/defs)
 add_subdirectory(core_lib/source/note-wptt)
 add_subdirectory(core_lib/misc/test_stubs/storage_stubs)
-add_subdirectory(core_lib/source/gen-rlitt)
-add_subdirectory(core_lib/source/comp-rlitt_positivity)
-add_subdirectory(core_lib/source/comp-rlitt_grafting)
-add_subdirectory(core_lib/source/comp-rlitt_ringshift)
-add_subdirectory(core_lib/source/comp-wptt_vertex_canonicity)
+add_subdirectory(core_lib/source/comp-rlitt_pure_vignette)
 add_subdirectory(wrapper)
 
 ################################################################################
