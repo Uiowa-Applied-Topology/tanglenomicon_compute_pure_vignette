@@ -452,3 +452,4 @@ db_files
 docker/.faktory_data/data/db
 docker/.db_files
 docker/.run_data
+.site

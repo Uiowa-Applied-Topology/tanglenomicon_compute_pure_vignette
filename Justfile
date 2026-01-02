@@ -34,7 +34,7 @@ test-all:
 # build the docs
 docs:
     source .venv/bin/activate && \
-    mkdocs build
+    mkdocs build -d .site
 
 [working-directory: 'libraries']
 build-wrapper: bootstrap 
