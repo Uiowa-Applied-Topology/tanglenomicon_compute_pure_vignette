@@ -20,8 +20,6 @@ A job is processed.
 ## Scenario
 
 1. Faktory distributes a job.
-2. The pages for the job is retrieved from long term storage.
-3. The pages are grafted together.
-4. Resulting tangles are inserted into storage.
-5. Ungood versions of these tangles are grafted.
-6. Resulting ungood tangles are written to long term storage.
+2. The page for the job is retrieved from long term storage.
+3. The page is computed on.
+4. Resulting computed values are inserted into storage.

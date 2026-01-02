@@ -2,9 +2,9 @@
 
 ## Description
 
-An entry point for the python portion of the RLITT generator toolchain. The entry point exposes a
+An entry point for the Python portion of the RLITT generator toolchain. The entry point exposes a
 command line interface utilizing the [Typer](https://typer.tiangolo.com/) library. Two interfaces
-are offered, one that starts the tool in producer mode and that starts the tool in worker mode.
+are offered, one that starts the tool in producer mode and one that starts the tool in worker mode.
 
 ### Public Interfaces
 
@@ -39,7 +39,7 @@ The worker mode for the tool subscribes to and
 stateDiagram-v2
     state "Load configuration." as lc
     state "Get job" as gj
-    state "Proccess job" as pj
+    state "Process job" as pj
 
     state if_state <<choice>>
 

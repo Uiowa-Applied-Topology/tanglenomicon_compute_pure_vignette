@@ -7,7 +7,7 @@ instances of the worker to run simultaneously.
 
 ### Public Interfaces
 
-#### Faktory Job
+#### Faktory Worker
 
 The Faktory worker interface serves as the primary entry point for worker mode. The interface
 retrieves and processes tangle generation jobs distributed by Faktory.
@@ -38,27 +38,25 @@ The worker class describes the data and methods needed for an atomic generation 
 ##### Process Job
 
 The process job method contains the core logic of the worker class. The method connects to the
-MongoDB tangle collection and retrieves the pages pointed to by the job data. The method then calls
-the low-level grafting code to generate the new tangles from the pages.
+MongoDB tangle collection and retrieves the page pointed to by the job data. The method then calls
+the low-level computation code to compute new tangle data from the pages.
 
 ###### State Machine
 
 ```mermaid
 stateDiagram-v2
     state "Retrieve job" as rj
-    state "Get rootstock page" as grp
-    state "Get scion page" as gsp
+    state "Get page" as gp
 
-    state "Graft pages" as gp
-    state "Store new tangles" as snt
+    state "Compute on page" as snt
+    state "Write computed data" as wcd
     state "Report job results" as rjr
 
     [*]--> rj
-    rj --> grp
-    grp --> gsp
-    gsp --> gp
+    rj --> gp
     gp --> snt
-    snt --> rjr
+    snt --> wcd
+    wcd --> rjr
     rjr --> [*]
 
 ```
@@ -67,53 +65,9 @@ stateDiagram-v2
 
 ### Process Job
 
-#### Positive Tests
+Unit test description is problematic without a unit test framework.
 
 <!-- prettier-ignore-start -->
-!!! test-card "Valid job"
-   
-    A valid job and collection is configured. Job processing is started. Correct output tangles are written.
-
-    **Inputs:**
-
-    - Mocked MongoDB collection
-    - Page size set to two
-
-    **Expected Output:**
-
-    - Tangles correctly generated
-    - Each tangle is seen in a page. 
-<!-- prettier-ignore-end -->
-
-#### Negative tests
-
-<!-- prettier-ignore-start -->
-!!! test-card "Invalid collection"
-   
-    An invalid collection is configured. 
-    **Inputs:**
-
-    - Mocked invalid MongoDB collection
-
-    **Expected Output:**
-    
-    - Exception is thrown 
-<!-- prettier-ignore-end -->
-
-<!-- prettier-ignore-start -->
-!!! test-card "Invalid Index"
-  
-    A page index is found in the job but not found in the collection. 
-
-    **Inputs:**
-
-    - Mocked valid MongoDB collection
-    - Invalid index
-
-    **Expected Output:**
-    
-    - Exception is thrown 
-<!-- prettier-ignore-end -->
 
 ## Implementation
 

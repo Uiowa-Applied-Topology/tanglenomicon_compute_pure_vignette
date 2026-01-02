@@ -2,8 +2,8 @@
 
 ## Description
 
-Handles the functionality for the loading a configuration file for the python portion of the tool
-chain. The configuration is stored as a YAML file with the following structure:
+Handles the functionality for loading a configuration file for the Python portion of the toolchain.
+The configuration is stored as a YAML file with the following structure:
 
 - **faktory-connection-info**: Information for connecting to a Faktory instance.
     - **port**: The port the Faktory instance can be found on.

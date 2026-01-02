@@ -2,26 +2,23 @@
 
 ## Primary actor
 
-- Empty Job Queue.
+- Start up
 
 ## Trigger
 
-Faktory reports that the job queue is empty.
+Faktory starts with the job queue empty.
 
 ## Goal
 
-The job queue is refilled.
+The job queue is filled.
 
 ## Preconditions
 
-The stencil and tangle long term storage are connected.
+The tangle long term storage are connected.
 
 ## Scenario
 
-1. Faktory reports that the job queue is empty.
-2. Stencil for active TCN are completed.
-3. Stencil configuration is updated.
-4. Stencils for next TCN are processed.
-    1. Tangles are paginated into jobs.
-    2. Stencils are marked complete.
-5. New jobs are reported to Faktory.
+1. Faktory starts
+2. Faktory has an empty queue.
+3. Tangles are paginated into jobs.
+4. New jobs are reported to Faktory.

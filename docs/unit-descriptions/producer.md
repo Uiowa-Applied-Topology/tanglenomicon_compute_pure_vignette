@@ -14,88 +14,24 @@ implements the job production state machine found in the README.
 
 ### Private interface
 
-#### Process Stencil
-
-Stencils consist of an ordered pair $(j,k)$, with $j+k=\text{TCN}$ the target TCN (tree crossing
-number). The stencils are used to produce jobs (job structure as described in the README) by
-pagination of an input collection of tangles.
+#### Produce Jobs
 
 ##### State machine
 
 ```mermaid
 stateDiagram-v2
-    state "Get stencil" as gs
-    state "Find rootstock pages" as frp
-    state "Find scion pages" as fsp
-    state "Mark stencil done" as msd
+    state "Find tangle pages" as frp
+    state "Enqueue Job" as ej
 
-
-    [*]--> gs
-    gs --> frp
-    frp --> fsp
-    fsp --> forp
-
-    forp: For each rootstock page
-    state forp{
-        fosp: For each scion page
-        state fosp{
-            state "Build jobs" as bj
-            state "Enqueue jobs" as ej
-        [*]-->bj
-        bj -->ej
-        ej --> [*]
-        }
-        [*]-->fosp
-        fosp-->[*]
-    }
-    forp --> msd
-    msd --> [*]
-
+    [*] --> frp
+    frp --> ej
+    ej --> [*]
 ```
 
 ## Unit test description
 
-### Process Stencil
+Unit test description is problematic without a unit test framework.
 
-We will unit test the `_process_stencil` function but skip other interfaces due to lack of mock
-tooling.
-
-#### Positive Tests
-
-<!-- prettier-ignore-start -->
-!!! test-card "Valid Stencil"
-   
-    A valid stencil and collection is configured. Correct output jobs are created.
-
-    **Inputs:**
-
-    - Mocked MongoDB collection
-    - Page size set to two
- 
-    **Expected Output:**
-
-    - Jobs generated 
-<!-- prettier-ignore-end -->
-
-#### Negative tests
-
-<
-
-<!-- prettier-ignore-start -->
-!!! test-card "Empty collection "
-  
-    An empty collection is configured.  
-
-    **Inputs:**
-
-    - Mocked empty MongoDB collection
-
-    **Expected Output:**
-    
-    - Exception is thrown 
-<!-- prettier-ignore-end -->
-
-<!-- prettier-ignore-start -->
 ## Implementation
 
 <!-- prettier-ignore-start -->

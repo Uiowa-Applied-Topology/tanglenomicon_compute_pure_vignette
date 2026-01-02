@@ -18,6 +18,6 @@ Long term storage is attached.
 
 ## Scenario
 
-1. An actor initiates a use case which requires pagination of a collection.
+1. An actor initiates a use case that requires pagination of a collection.
 2. A collection is stepped through.
 3. Pages of a given length are marked.

@@ -18,6 +18,6 @@ Long term storage is attached.
 
 ## Scenario
 
-1. An actor initiates a use case which requires a page of tangles.
+1. An actor initiates a use case that requires a page of tangles.
 2. Long term storage is parsed for a given page of tangles.
 3. The page is reported.
