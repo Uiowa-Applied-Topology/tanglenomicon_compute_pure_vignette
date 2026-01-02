@@ -91,13 +91,10 @@ class Worker:
 
 
 def faktory_job(tangle_idx: str, page_size: int):
-    """Pyfaktory worker callback for generating RLITT.
+    """Pyfaktory worker callback for computing on RLITT.
 
     Args:
-        rt_idx: ID of the start of the rootstock page.
-        rt_tcn: TCN of the rootstocks.
-        sci_idx: ID of the start of the scion page.
-        sci_tcn: TCN of the scions.
+        tangle_idx: ID of the start of the tangle page.
         page_size: The size of the page of tangles to retrieve.
     """
     db_cfg = cfg.cfg_dict['db-connection-info']

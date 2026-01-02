@@ -1,9 +1,7 @@
-"""The faktory client core functionality."""
+"""The faktory client core computation functionality."""
 
-import time
 from collections.abc import Generator
 
-from dacite import from_dict
 from pyfaktory import Client, Job, Producer
 from pymongo.collection import Collection
 
@@ -45,9 +43,8 @@ def _process_tangles(arbor_col: Collection, queue: str) -> Generator[Job, None, 
     """Process a given stencil into jobs and push to faktory.
 
     Args:
-        stencil_col: The colection of stencils.
         arbor_col: The collection of arborescent tangles.
-        stencil: The stencil to process.
+        queue: The queue to insert the job into.
     """
     for page_idx in _paginate_filter(arbor_col, {}):
         job = Job(
