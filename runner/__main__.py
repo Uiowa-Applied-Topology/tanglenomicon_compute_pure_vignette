@@ -37,8 +37,10 @@ def worker(config: Path):
         faktory_url=f'tcp://{cfg.cfg_dict["faktory-connection-info"]["domain"]}:{cfg.cfg_dict["faktory-connection-info"]["port"]}',
         role='consumer',
     ) as client:
-        consumer = Consumer(client=client, queues=['arborescent'], concurrency=1)
-        consumer.register('arbor_job', fworker.faktory_job)
+        consumer = Consumer(
+            client=client, queues=[cfg.cfg_dict['faktory-connection-info']['queue']], concurrency=1
+        )
+        consumer.register(cfg.cfg_dict['faktory-connection-info']['queue'], fworker.faktory_job)
         consumer.run()
 
 

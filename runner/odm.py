@@ -39,18 +39,6 @@ def get_db(url: str, port: int, username: str, password: str, database_name: str
     ) from None  # @@@IMPROVEMENT: needs to be updated to exception object
 
 
-def get_stencil_collection(dbc: Database) -> Collection:
-    """Get the stencil collection.
-
-    Args:
-        dbc: The mongodb to get the collection from.
-
-    Returns:
-        A connection to the stencil collection.
-    """
-    return dbc[cfg.cfg_dict['tangle-collections']['stencil_col_name']]
-
-
 def get_arborescent_collection(dbc: Database) -> Collection:
     """Get the arborescent tangle collection.
 
@@ -61,52 +49,3 @@ def get_arborescent_collection(dbc: Database) -> Collection:
         A connection to the arborescent collection.
     """
     return dbc[cfg.cfg_dict['tangle-collections']['col_name']]
-
-
-class StencilStateEnum(int, Enum):
-    """The enum for states a stencil can occupy.
-
-    Attributes:
-        new: The stencil is new.
-        started: The stencil is being processed.
-        no_headroom: The stencil is fully processed but jobs are not yet created.
-        complete: The stencil is fully processed.
-    """
-
-    new = 0
-    started = 1
-    no_headroom = 2
-    complete = 3
-
-
-@dataclass
-class StencilCfg:
-    """The configuration document for the stencil store.
-
-    Attributes:
-        current_completed_tcn: The current largest TCN to be fully generated.
-        max_tcn: The maximum TCN to process.
-        _id: The ID for the document.
-    """
-
-    current_completed_tcn: int
-    max_tcn: int
-    _id: str
-
-
-@dataclass
-class StencilDB:
-    """The shape of a stencil document.
-
-    Attributes:
-        _id: The ID for the document.
-        rootstock_tcn: The TCN for the rootstock of the stencil.
-        scion_tcn: The TCN for the scion of the stencil.
-        state: The state of the stencil. This is in terms of StencilStateEnum.
-        cursor: The current cursor, a pair of ObjectId for arborescent tangle documents.
-    """
-
-    _id: ObjectId
-    rootstock_tcn: int
-    scion_tcn: int
-    state: int
