@@ -1,6 +1,7 @@
 faktory-connection-info:
     port: 7419
     domain: faktory
+    queue: pure_vignette
 db-connection-info:
     domain: mongo
     port: 27017
@@ -11,3 +12,4 @@ tangle-collections:
     stencil_col_name: arborescent_stencils
     col_name: arborescent_tangles
     page_size: 500
+    new_field: pure_vignette

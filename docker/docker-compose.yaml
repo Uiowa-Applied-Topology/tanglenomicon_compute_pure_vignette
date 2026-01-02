@@ -80,7 +80,6 @@ services:
             - tang_internal
         volumes:
             - ./config.yaml:/config/config.yaml
-        restart: always
         depends_on:
             - faktory
 
