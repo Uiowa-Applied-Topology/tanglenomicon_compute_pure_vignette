@@ -6,6 +6,8 @@ on:
             - "v*.*.*"
 
 permissions:
+    pages: write
+    id-token: write
     contents: write
 
 jobs:
